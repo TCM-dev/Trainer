@@ -1,0 +1,1 @@
+tsc -p d:\desktop\Trainer\tsconfig.json --watch
