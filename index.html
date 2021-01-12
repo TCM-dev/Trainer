@@ -4,10 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <button id="button">Get scramble</button>
     <div id="scramble"></div>
-    <script type="module" src="dist/script.js"></script>
+
+    <form>
+      <fieldset>
+        Configuration
+        <p>Type</p>
+        <label>
+          <input type="checkbox" name="pll" />
+          PLL
+        </label>
+        <label>
+          <input type="checkbox" name="oll" />
+          OLL
+        </label>
+        <label>
+          <input type="checkbox" name="zbll" />
+          ZBLL
+        </label>
+        <p>Orientation</p>
+        <label>
+          <input type="radio" name="orientation" value="none" />
+          Aucune
+        </label>
+        <label>
+          <input type="radio" name="orientation" value="u" />
+          U
+        </label>
+        <label>
+          <input type="radio" name="orientation" value="u'" />
+          U'
+        </label>
+        <label>
+          <input type="radio" name="orientation" value="u2" />
+          U2
+        </label>
+      </fieldset>
+    </form>
+
+    <script src="dist/main.js"></script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 import { Options } from "./interfaces";
-import { getZBLLScramble } from "./scrambler/zbll.js";
+import { getZBLLScramble } from "./scrambler/zbll";
 
 const getScramble = (options: Options) => {
   switch (options?.type) {

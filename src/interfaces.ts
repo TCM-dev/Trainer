@@ -1,13 +1,13 @@
-import { Orientation, Type } from "./types";
+import { Rotation, Type } from "./types";
 
 export interface Options {
   type?: Type;
-  orientation?: Orientation;
+  rotation?: Rotation;
 }
 
 export interface Alg {
   alg: string;
-  orientation?: Orientation;
+  rotation?: Rotation;
 }
 
 export interface Case {
