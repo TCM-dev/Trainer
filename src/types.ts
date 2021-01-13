@@ -1,6 +1,6 @@
 export type Type = "PLL" | "OLL" | "ZBLL";
 export type Rotation = null | "U" | "U'" | "U2";
-export type Angle = "y" | "y'" | "z" | "z'" | "x" | "x'";
+export type Angle = "y" | "y'" | "y2" | "z" | "z'" | "z2" | "x" | "x'" | "x2";
 export type FaceNotation = "U" | "F" | "R" | "B" | "L" | "D";
 export type Color = "white" | "yellow" | "red" | "orange" | "green" | "blue";
 export type Center = Color;

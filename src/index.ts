@@ -1,7 +1,7 @@
 import { Options } from "./interfaces";
 import { getZBLLScramble } from "./scrambler/zbll";
-import { Corner, Edge, Layer } from "./types";
-import { vizualizeFace, vizualizeLayer } from "./visualizer/face";
+import { Corner, Cube, Edge, Layer } from "./types";
+import { getLayer, vizualizeFace, vizualizeLayer } from "./visualizer/face";
 
 const getScramble = (options: Options) => {
   switch (options?.type) {
@@ -49,30 +49,7 @@ button.addEventListener("click", () => {
 //   bottomRight
 // ]);
 
-const topLayer: Layer = [
-  ["yellow", "orange", "green"],
-  ["yellow", "green"],
-  ["yellow", "green", "red"],
-  ["yellow", "orange"],
-  "yellow",
-  ["yellow", "red"],
-  ["yellow", "blue", "orange"],
-  ["yellow", "blue"],
-  ["yellow", "red", "blue"]
-];
-
 console.time("test");
-vizualizeLayer(topLayer);
+const layer = getLayer(cube, "F");
+console.log(vizualizeLayer(layer));
 console.timeEnd("test");
-
-const bottomLayer: Layer = [
-  ["yellow", "orange", "green"],
-  ["yellow", "green"],
-  ["yellow", "green", "red"],
-  ["yellow", "orange"],
-  "yellow",
-  ["yellow", "red"],
-  ["yellow", "blue", "orange"],
-  ["yellow", "blue"],
-  ["yellow", "red", "blue"]
-];
