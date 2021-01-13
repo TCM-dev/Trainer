@@ -3,6 +3,7 @@
     "target": "es2015",
     "module": "es2015",
     // "sourceMap": true,
+    "noImplicitAny": true,
     "outDir": "./dist"
   },
   "exclude": ["./build", "./node_modules"]
