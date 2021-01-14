@@ -55,7 +55,29 @@ export const vizualizeLayer = (layer: Layer) => {
   ]);
 };
 
-export const vizualizeCube = (cube: Cube) => {};
+export const vizualizeCube = (cube: Cube): Element => {
+  const cubeDiv = document.createElement("div");
+  cubeDiv.classList.add("cube");
+
+  for (let index = 0; index < 3; index++) {
+    const faceDiv = document.createElement("div");
+    const stickerGroupDiv = document.createElement("div");
+    const face = cube[index];
+    faceDiv.classList.add("face");
+    faceDiv.appendChild(stickerGroupDiv);
+
+    face.forEach((sticker) => {
+      const stickerDiv = document.createElement("div");
+      stickerDiv.classList.add(sticker, "sticker");
+      stickerDiv.style.backgroundColor = sticker;
+      stickerGroupDiv.appendChild(stickerDiv);
+    });
+
+    cubeDiv.appendChild(faceDiv);
+  }
+
+  return cubeDiv;
+};
 
 // const rotateCube = (cube: Cube, angle: Angle) => {
 //   const oldFirstLayer: Layer = cube[0]
@@ -176,7 +198,7 @@ const rotateFace = (face: Face, rotation: Rotation): Face => {
   }
 };
 
-const rotateCube = (cube: Cube, angle: Angle): Cube => {
+export const rotateCube = (cube: Cube, angle: Angle): Cube => {
   const U_face = cube[0];
   const F_face = cube[1];
   const R_face = cube[2];
@@ -247,37 +269,37 @@ const rotateCube = (cube: Cube, angle: Angle): Cube => {
 
     case "z":
       return [
-        L_face,
+        rotateFace(L_face, "U"),
         rotateFace(F_face, "U"),
-        U_face,
+        rotateFace(U_face, "U"),
         rotateFace(B_face, "U'"),
-        D_face,
-        R_face,
+        rotateFace(D_face, "U"),
+        rotateFace(R_face, "U"),
       ];
 
     case "z'":
       return [
-        R_face,
+        rotateFace(R_face, "U'"),
         rotateFace(F_face, "U'"),
-        D_face,
+        rotateFace(D_face, "U'"),
         rotateFace(B_face, "U"),
-        U_face,
-        L_face,
+        rotateFace(U_face, "U'"),
+        rotateFace(L_face, "U'"),
       ];
 
     case "z2":
       return [
-        D_face,
+        rotateFace(D_face, "U2"),
         rotateFace(F_face, "U2"),
-        L_face,
+        rotateFace(L_face, "U2"),
         rotateFace(B_face, "U2"),
-        R_face,
-        U_face,
+        rotateFace(R_face, "U2"),
+        rotateFace(U_face, "U2"),
       ];
   }
 };
 
-const rotateCubeLayer = (
+export const rotateCubeLayer = (
   cube: Cube,
   faceNotation: FaceNotation,
   rotation: Rotation
@@ -491,7 +513,6 @@ const rotateCubeLayer = (
       }
 
       case "U'": {
-        // TODO
         const newU_face: Face = [
           U_face[0],
           U_face[1],
@@ -499,36 +520,36 @@ const rotateCubeLayer = (
           U_face[3],
           U_face[4],
           U_face[5],
-          L_face[2],
-          L_face[5],
-          L_face[8],
+          R_face[0],
+          R_face[3],
+          R_face[6],
         ];
         const newR_face: Face = [
-          U_face[6],
+          D_face[2],
           R_face[1],
           R_face[2],
-          U_face[7],
+          D_face[1],
           R_face[4],
           R_face[5],
-          U_face[8],
+          D_face[0],
           R_face[7],
           R_face[8],
         ];
         const newL_face: Face = [
           L_face[0],
           L_face[1],
-          D_face[0],
+          U_face[8],
           L_face[3],
           L_face[4],
-          D_face[1],
+          U_face[7],
           L_face[6],
           L_face[7],
-          D_face[2],
+          U_face[6],
         ];
         const newD_face: Face = [
-          R_face[6],
-          R_face[3],
-          R_face[0],
+          L_face[2],
+          L_face[5],
+          L_face[8],
           D_face[3],
           D_face[4],
           D_face[5],
@@ -537,56 +558,56 @@ const rotateCubeLayer = (
           D_face[8],
         ];
 
-        return [face, newF_face, newR_face, newB_face, newL_face, D_face];
+        return [newU_face, face, newR_face, B_face, newL_face, newD_face];
       }
 
       case "U2": {
-        const newF_face: Face = [
-          B_face[0],
-          B_face[1],
-          B_face[2],
-          F_face[3],
-          F_face[4],
-          F_face[5],
-          F_face[6],
-          F_face[7],
-          F_face[8],
+        const newU_face: Face = [
+          U_face[0],
+          U_face[1],
+          U_face[2],
+          U_face[3],
+          U_face[4],
+          U_face[5],
+          D_face[2],
+          D_face[1],
+          D_face[0],
         ];
         const newR_face: Face = [
-          L_face[0],
-          L_face[1],
-          L_face[2],
-          R_face[3],
+          L_face[8],
+          R_face[1],
+          R_face[2],
+          L_face[5],
           R_face[4],
           R_face[5],
-          R_face[6],
+          L_face[2],
           R_face[7],
           R_face[8],
         ];
-        const newB_face: Face = [
-          F_face[0],
-          F_face[1],
-          F_face[2],
-          B_face[3],
-          B_face[4],
-          B_face[5],
-          B_face[6],
-          B_face[7],
-          B_face[8],
-        ];
         const newL_face: Face = [
-          R_face[0],
-          R_face[1],
-          R_face[2],
+          L_face[0],
+          L_face[1],
+          R_face[6],
           L_face[3],
           L_face[4],
-          L_face[5],
+          R_face[3],
           L_face[6],
           L_face[7],
-          L_face[8],
+          R_face[0],
+        ];
+        const newD_face: Face = [
+          U_face[8],
+          U_face[7],
+          U_face[6],
+          D_face[3],
+          D_face[4],
+          D_face[5],
+          D_face[6],
+          D_face[7],
+          D_face[8],
         ];
 
-        return [face, newF_face, newR_face, newB_face, newL_face, D_face];
+        return [newU_face, face, newR_face, B_face, newL_face, newD_face];
       }
     }
   }
@@ -594,7 +615,7 @@ const rotateCubeLayer = (
   return cube;
 };
 
-const generateCube = (): Cube => {
+export const generateCube = (): Cube => {
   const cube: Cube = [
     [
       "yellow",
