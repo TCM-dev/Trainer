@@ -6,7 +6,7 @@ body {
   color: #fafafa;
 }
 
-button {
+button, input {
   color: #121212;
 }
 
@@ -34,7 +34,7 @@ button {
 }
 
 .sticker {
-  border-radius: 2px;
+  border-radius: 5px;
 }
 
 .face:nth-child(1) {

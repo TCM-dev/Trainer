@@ -4,7 +4,7 @@ import { Rotation } from "./types";
 
 export const getRandomFromArray = (array: Array<any>, not: any = null) => {
   if (not) {
-    const arrayWithoutLast = array.filter((obj) => !_.isEqual(obj, not));
+    const arrayWithoutLast = array.filter(obj => !_.isEqual(obj, not));
     return arrayWithoutLast[
       Math.floor(Math.random() * arrayWithoutLast.length)
     ];
@@ -19,6 +19,16 @@ export const setLastCase = ($case: Case) => {
 
 export const getLastCase = (): Case => {
   return JSON.parse(localStorage.getItem("case"));
+};
+
+export const addRandomRotation = (alg: Alg): Alg => {
+  const rotations: Array<Rotation> = ["U", "U'", "U2"];
+  const rotation: Rotation =
+    rotations[Math.floor(Math.random() * rotations.length)];
+
+  alg.alg += ` ${rotation}`;
+
+  return alg;
 };
 
 export const changeAlgRotation = (alg: Alg, rotation: Rotation): Alg => {

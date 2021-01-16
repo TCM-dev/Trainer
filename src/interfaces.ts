@@ -7,6 +7,7 @@ export interface Options {
 
 export interface Alg {
   alg: string;
+  name?: string;
   rotation?: Rotation;
 }
 
