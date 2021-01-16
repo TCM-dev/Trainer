@@ -14,3 +14,8 @@ export interface Alg {
 export interface Case {
   algs: Array<Alg>;
 }
+
+export interface Recognition {
+  correct: boolean;
+  alg: Alg;
+}

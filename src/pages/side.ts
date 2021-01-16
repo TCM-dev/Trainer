@@ -1,10 +1,6 @@
+import { Recognition } from "../interfaces";
 import { SideRecognition } from "../trainers/siderecognition";
-import {
-  generateCube,
-  reverseAlg,
-  useAlgOnCube,
-  vizualizeCube
-} from "../visualizer/face";
+import { generateCube, useAlgOnCube, vizualizeCube } from "../visualizer/face";
 
 const trainer = new SideRecognition();
 
@@ -18,16 +14,31 @@ const displayCube = () => {
   document.body.replaceChild(cubeDiv, currentCubeDiv);
 };
 
+const displaySession = (session: Array<Recognition>) => {
+  const sessionDiv = document.getElementById("session");
+  sessionDiv.innerHTML = "";
+
+  session.forEach((recognition) => {
+    const recognitionDiv = document.createElement("div");
+    recognitionDiv.className = recognition.correct ? "correct" : "incorrect";
+    recognitionDiv.textContent = recognition.correct ? "Yes" : "No";
+    recognitionDiv.innerHTML += `<br />${recognition.alg.name}`;
+    sessionDiv.appendChild(recognitionDiv);
+  });
+};
+
 displayCube();
 
 const answerInput = <HTMLInputElement>document.getElementById("answer");
 const form = document.getElementById("form");
 
-form.addEventListener("submit", e => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
   const answer = answerInput.value;
   answerInput.value = "";
-  console.log(trainer.isAnswerCorrect(answer));
+  trainer.answer(answer);
   trainer.getRandomAlg();
+  const session = trainer.getSession();
+  displaySession(session);
   displayCube();
 });

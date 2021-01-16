@@ -59,3 +59,24 @@ button, input {
 .face:nth-child(2) > div {
   transform: rotate(-90deg);
 }
+
+#session {
+  max-width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#session > div {
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+#session > div.correct {
+  background-color: greenyellow;
+  color: green;
+}
+
+#session > div.incorrect {
+  background-color: red;
+  color: black;
+}

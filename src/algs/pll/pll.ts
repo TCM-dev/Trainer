@@ -7,7 +7,7 @@ const Adjacent_PLL: Array<Alg> = [
   },
   {
     name: "Ab",
-    alg: "x' L2 D2 L U L' D2 L U' L x"
+    alg: "x R2 D2 R U R' D2 R U' R x'"
   },
   {
     name: "F",
@@ -93,5 +93,4 @@ const Edge_PLL: Array<Alg> = [
   }
 ];
 
-// export const PLL: Array<Alg> = [...Adjacent_PLL, ...Diagonal_PLL, ...Edge_PLL];
-export const PLL: Array<Alg> = [{ alg: "x R' U R' D2 R U' R' D2 R2 x'", name: "aa" }];
+export const PLL: Array<Alg> = [...Adjacent_PLL, ...Diagonal_PLL, ...Edge_PLL];

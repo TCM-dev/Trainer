@@ -1,14 +1,16 @@
 import { PLL } from "../algs/pll/pll";
-import { Alg } from "../interfaces";
+import { Alg, Recognition } from "../interfaces";
 import { addRandomRotation, getRandomFromArray } from "../utils";
 import { reverseAlg } from "../visualizer/face";
 
 export class SideRecognition {
   startTime: Date;
   currentAlg: Alg;
+  session: Array<Recognition>;
 
   constructor() {
     this.getRandomAlg();
+    this.session = [];
   }
 
   start = () => {
@@ -19,10 +21,23 @@ export class SideRecognition {
     this.currentAlg = addRandomRotation(reverseAlg(getRandomFromArray(PLL)));
   };
 
+  answer = (answer: string) => {
+    this.addRecognition(this.isAnswerCorrect(answer));
+  };
+
   isAnswerCorrect = (answer: string) => {
-    console.log("answer :", answer)
-    console.log("solution :", this.currentAlg.name)
     return answer.toLowerCase() === this.currentAlg.name.toLowerCase();
+  };
+
+  addRecognition = (correct: boolean) => {
+    this.session.push({
+      correct,
+      alg: this.currentAlg,
+    });
+  };
+
+  getSession = () => {
+    return this.session;
   };
 
   getCurrentAlg = (): Alg => {
