@@ -18,9 +18,20 @@ button, input {
   padding-top: 180px;
 }
 
-.face {
+.cube .face {
   transform-origin: 0 0;
   position: absolute;
+}
+
+#faces {
+  display: flex;
+}
+
+#faces .face {
+  margin: 2rem;
+}
+
+.face {
   width: 200px;
   height: 200px;
 }
@@ -37,26 +48,26 @@ button, input {
   border-radius: 5px;
 }
 
-.face:nth-child(1) {
+.cube .face:nth-child(1) {
   /* background: blue; */
   transform: rotate(210deg) skew(-30deg) translate(-200px, -60px) scaleY(0.864);
 }
 
-.face:nth-child(2) {
+.cube .face:nth-child(2) {
   /* background: red; */
   transform: rotate(90deg) skewX(-30deg) scaleY(0.864) translate(68px, -131px);
 }
 
-.face:nth-child(3) {
+.cube .face:nth-child(3) {
   /* background: green; */
   transform: rotate(-30deg) skewX(-30deg) translate(130px, 172px) scaleY(0.864);
 }
 
-.face:nth-child(1) > div {
+.cube .face:nth-child(1) > div {
   transform: rotate(180deg);
 }
 
-.face:nth-child(2) > div {
+.cube .face:nth-child(2) > div {
   transform: rotate(-90deg);
 }
 

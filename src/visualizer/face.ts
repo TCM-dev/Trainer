@@ -30,6 +30,20 @@ export const vizualizeFace = (face: Face) => {
     [left, center, right],
     [bottomLeft, bottom, bottomRight],
   ]);
+
+  const faceDiv = document.createElement("div");
+  const stickerGroupDiv = document.createElement("div");
+  faceDiv.appendChild(stickerGroupDiv);
+  faceDiv.classList.add("face");
+
+  face.forEach((sticker) => {
+    const stickerDiv = document.createElement("div");
+    stickerDiv.classList.add(sticker, "sticker");
+    stickerDiv.style.backgroundColor = sticker;
+    stickerGroupDiv.appendChild(stickerDiv);
+  });
+
+  return faceDiv;
 };
 
 export const vizualizeLayer = (layer: Layer) => {
@@ -86,7 +100,7 @@ export const vizualizeCube = (cube: Cube): Element => {
 //   const oldLastLayer: Layer = cube[2]
 // }
 
-const getFace = (cube: Cube, faceNotation: FaceNotation): Face => {
+export const getFace = (cube: Cube, faceNotation: FaceNotation): Face => {
   switch (faceNotation) {
     case "U":
       return cube[0];

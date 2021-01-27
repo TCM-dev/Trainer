@@ -1,8 +1,8 @@
 import { Recognition } from "../interfaces";
-import { SideRecognition } from "../trainers/siderecognition";
+import { SideRecognitionTrainer } from "../trainers/siderecognition";
 import { generateCube, useAlgOnCube, vizualizeCube } from "../visualizer/face";
 
-const trainer = new SideRecognition();
+const trainer = new SideRecognitionTrainer();
 
 const displayCube = () => {
   const alg = trainer.getCurrentAlg();
@@ -32,13 +32,13 @@ displayCube();
 const answerInput = <HTMLInputElement>document.getElementById("answer");
 const form = document.getElementById("form");
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const answer = answerInput.value;
-  answerInput.value = "";
-  trainer.answer(answer);
-  trainer.getRandomAlg();
-  const session = trainer.getSession();
-  displaySession(session);
-  displayCube();
-});
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   const answer = answerInput.value;
+//   answerInput.value = "";
+//   trainer.answer(answer);
+//   trainer.getRandomAlg();
+//   const session = trainer.getSession();
+//   displaySession(session);
+//   displayCube();
+// });

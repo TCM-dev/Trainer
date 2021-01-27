@@ -7,10 +7,15 @@ module.exports = {
   // entry files
   entry: "./src/index.ts",
 
+  entry: {
+    "module/pages/side": "./src/pages/side.ts",
+    "module/pages/ollp": "./src/pages/ollp.ts",
+  },
+
   // output bundles (location)
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "main.js",
+    filename: "[name].js",
   },
 
   // file resolutions
@@ -29,5 +34,5 @@ module.exports = {
     ],
   },
 
-  watch: true
+  watch: true,
 };

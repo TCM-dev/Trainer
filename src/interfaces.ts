@@ -19,3 +19,8 @@ export interface Recognition {
   correct: boolean;
   alg: Alg;
 }
+
+export interface Time {
+  duration: number;
+  alg: Alg;
+}

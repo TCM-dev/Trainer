@@ -1,4 +1,4 @@
-import "./pages/side";
+// import "./pages/side";
 
 // import { Alg, Options } from "./interfaces";
 // import { getZBLLScramble } from "./scrambler/zbll";
